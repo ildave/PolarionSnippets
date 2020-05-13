@@ -48,21 +48,7 @@ with( JavaPackages ) {
               }
               return sb.toString();
        }
-       /*
-       function getMergeRequestId(input) {
-              var pattern = ".*\"iid\":([0-9]+),.*";
-              var r = Pattern.compile(pattern);
-              var matcher = r.matcher(input);
-              if (matcher.find()) {
-                     log(matcher.group(0));
-                     log(matcher.group(1));
-                     return matcher.group(1);
-              }
-              else {
-                     log("No matches");
-              }
-       }
-       */
+       
        function getMergeRequestId(input) {
               var obj = JSON.parse(input);
               return obj.iid;
