@@ -18,7 +18,6 @@ var JavaPackages = new JavaImporter(
        java.io,  
        java.util,
        java.net,
-       java.util.regex,
        com.polarion.platform, 
        com.polarion.platform.core, 
        com.polarion.platform.context, 
