@@ -38,7 +38,7 @@ with( JavaPackages ) {
               var cred = vault.getCredentialsForKey(userKey);
               return cred.getPassword(); //cred.getUser()
        }
-
+       
        function getResponseBody(conn) {
               var br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
               var sb = new StringBuilder();
@@ -48,7 +48,7 @@ with( JavaPackages ) {
               }
               return sb.toString();
        }
-
+       /*
        function getMergeRequestId(input) {
               var pattern = ".*\"iid\":([0-9]+),.*";
               var r = Pattern.compile(pattern);
@@ -62,7 +62,11 @@ with( JavaPackages ) {
                      log("No matches");
               }
        }
-
+       */
+       function getMergeRequestId(input) {
+              var obj = JSON.parse(input);
+              return obj.iid;
+       }
 
        var outFile = new FileWriter("./logs/main/gitlabmergerequest.log", true); 
        var out = new BufferedWriter(outFile);
@@ -89,5 +93,5 @@ with( JavaPackages ) {
        var iid = getMergeRequestId(body);
        log("Iid: " + iid);
        
-       wi.setCustomField(mergerequestfield, iid);
+       wi.setCustomField(mergerequestfield, String.valueOf(iid));
 }
