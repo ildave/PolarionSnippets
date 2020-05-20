@@ -79,4 +79,5 @@ with( JavaPackages ) {
        log("Iid: " + iid);
        
        wi.setCustomField(mergerequestfield, String.valueOf(iid));
+       out.close();
 }

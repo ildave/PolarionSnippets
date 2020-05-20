@@ -54,4 +54,6 @@ with( JavaPackages ) {
        conn.setRequestProperty("PRIVATE-TOKEN", token);
        var response =  conn.getResponseCode();
        log("Response: " + response);
+
+       out.close();
 }

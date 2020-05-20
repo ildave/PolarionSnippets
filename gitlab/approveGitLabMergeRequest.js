@@ -70,4 +70,6 @@ with( JavaPackages ) {
        log("Response: " + response);
        var body = getResponseBody(conn);
        log("Body: " + body); 
+
+       out.close();
 }
