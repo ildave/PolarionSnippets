@@ -1,3 +1,9 @@
+/**
+ This workflow condition checks the a status of a Jenkins build and blocks the action if it is not OK.
+ Argument:
+ * buildfield: the id of the enum custom field that contains the Builds
+ */
+
 var JavaPackages = new JavaImporter(
     java.io,  
     java.util,
