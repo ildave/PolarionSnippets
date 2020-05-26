@@ -5,7 +5,7 @@
  * userKey: the key of a User Account Vault entry that must be created to store the Jenkins username and token  
  * 
  * Once triggered the job, it is not possibile to retrieve it result without polling 
- * the status of the job,  * and so blocking the function execution. 
+ * the status of the job, and so blocking the function execution. 
  * The polling is not implemented.
  */
 
@@ -57,7 +57,7 @@ with( JavaPackages ) {
     var jobfield = arguments.getAsString("jobfield");
     var jenkinsurl = arguments.getAsString("jenkinsurl");
     var userKey = arguments.getAsString("userKey")
-    var job = wi.getCustomField("jobid");
+    var job = wi.getCustomField(jobfield);
 
     log(job.getId());
     var endopoint = jenkinsurl + "/job/" + job.getId() + "/build";
