@@ -50,6 +50,11 @@ with( JavaPackages ) {
         return obj.iid;
     }
 
+    function getIssueURL(input) {
+        var obj = JSON.parse(input);
+        return obj.web_url;
+    }
+
     var outFile = new FileWriter("./logs/main/gitlabcreateissue.log", true); 
     var out = new BufferedWriter(outFile);
 
@@ -72,7 +77,11 @@ with( JavaPackages ) {
     var body = getResponseBody(conn);
     log("Body: " + body);
     var iid = getIssueId(body);
+    var issueURL = getIssueURL(body);
     log("[iid] " + iid);
+    log("[url] " + issueURL);
+    var role = wi.getProject().getHyperlinkRoleEnum().wrapOption("ref_ext");
     wi.setCustomField(issueidfield, String.valueOf(iid));
+    wi.addHyperlink(issueURL, role);
     out.close();
 }
