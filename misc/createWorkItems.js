@@ -16,6 +16,16 @@ with( JavaPackages ) {
            out.flush();
     }
 
+    function generateText(size) {
+        var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.".split(" ");
+        var out = "";
+        for (var i = 0; i < size; i++) {
+            var el = lorem[Math.floor(Math.random() * lorem.length)];
+            out += " " + el;
+        }
+        return out;
+    }
+
     var outFile = new FileWriter("./logs/main/createworkitems.log", true); 
     var out = new BufferedWriter(outFile);
 
@@ -34,7 +44,9 @@ with( JavaPackages ) {
     for (var i = 0; i < n; i++) {
         var item = ts.createWorkItem(destProject);
         item.setType(typeOpt);
-        item.setTitle("New item " +  (i + 1));
+        var size = Math.floor(Math.random() * (10 - 5 + 1) + 5);
+        var title = generateText(size);
+        item.setTitle(title);
         item.save();
         log("Created: " + item.getId());
     }
