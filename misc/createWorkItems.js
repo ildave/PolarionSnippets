@@ -7,7 +7,8 @@ var JavaPackages = new JavaImporter(
     com.polarion.platform.context, 
     com.polarion.platform.jobs,
     com.polarion.platform.persistence.model,
-    com.polarion.platform.internal.security
+    com.polarion.platform.internal.security,
+    com.polarion.core.util.types.Text
 ); 
 
 with( JavaPackages ) {
@@ -47,6 +48,9 @@ with( JavaPackages ) {
         var size = Math.floor(Math.random() * (10 - 5 + 1) + 5);
         var title = generateText(size);
         item.setTitle(title);
+        var desc = generateText(size * 3);
+        var content = new Text(Text.TYPE_PLAIN, desc);
+        item.setDescription(content);
         item.save();
         log("Created: " + item.getId());
     }
