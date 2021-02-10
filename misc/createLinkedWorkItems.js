@@ -58,6 +58,8 @@ with( JavaPackages ) {
     var link = wi.getCustomField("link");
 
     log("First Destination type: " + firstType);
+    log("Second Destination type: " + secondType);
+    log("Link: " + link);
     log("Number of item: " + n);
 
     var firstTypeOpt = destTrackerProject.getWorkItemTypeEnum().wrapOption(firstType);
