@@ -5,6 +5,7 @@ The script takes 4 arguments:
 * projectid -  the numeric ID of the GitLab projct
 * branchfield -  the id of the custom field to fill to specify the branch name - this is a string custom field 
                      and must be defined for the workitem typen that uses this function
+* sourcebranch -  the name of the source branch
 * userKey - the key of a User Account Valut entry that must be created to store the GitLab API key -  username can be anything, the password must be the token
 
 The script creates the branch from the master.
@@ -45,8 +46,9 @@ with( JavaPackages ) {
        var cfname = arguments.getAsString("branchfield"); //id of the custom field that contains the branch name
        var branchname = wi.getCustomField(cfname);
        var userKey = arguments.getAsString("userKey"); //id of the user account vault key that stores the API token
+       var sourcebranch = arguments.getAsString("sourcebranch");
        var token = getAPIToken(userKey);
-       var urlstring = gitlabURL + "/api/v4/projects/" + id + "/repository/branches?branch=" + branchname + "&ref=master"  //the branch is made from master
+       var urlstring = gitlabURL + "/api/v4/projects/" + id + "/repository/branches?branch=" + branchname + "&ref=sourcebranch"  //the branch is made from <sourcebranch>
        log(urlstring);
        var url = new URL(urlstring);
        var conn = url.openConnection();
