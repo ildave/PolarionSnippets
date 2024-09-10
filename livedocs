@@ -1,0 +1,35 @@
+var JavaPackages = new JavaImporter(
+    java.lang,
+    java.io,  
+    java.util,
+    java.net,
+    com.polarion.platform, 
+    com.polarion.platform.core, 
+    com.polarion.platform.context, 
+    com.polarion.platform.jobs,
+    com.polarion.platform.persistence.model,
+    com.polarion.platform.internal.security
+); 
+
+with( JavaPackages ) {
+    function log(str) {
+           out.write(str + "\n");
+           out.flush();
+    }
+
+    var outFile = new FileWriter("./logs/main/reusedocwithtraceability.log", true); 
+    var out = new BufferedWriter(outFile);
+
+
+    var master = workflowContext.getTarget();
+    var ts = master.getTrackerService();
+    var ms = ts.getModuleManager();
+
+    var reused = ms.duplicate(
+                    source,
+                    targetProject,
+                    targetLocation,
+    )
+
+    out.close();
+}

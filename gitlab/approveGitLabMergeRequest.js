@@ -31,7 +31,7 @@ with( JavaPackages ) {
        }
 
        function getAPIToken(userKey) {
-              var vault = UserAccountVault.getInstance();
+              var vault = com.polarion.platform.internal.security.UserAccountVault.getInstance();
               var cred = vault.getCredentialsForKey(userKey);
               return cred.getPassword(); //cred.getUser()
        }
